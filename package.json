@@ -1,23 +1,23 @@
 {
-  "name": "react-starter-kit",
+  "name": "scrabble-assessment",
   "version": "1.0.0",
-  "description": "A good enough starter kit for a React project, I guess.",
+  "description": "React end of mod 2 assessment.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack.js",
+    "build": "webpack",
     "test": "mocha --compilers js:babel/register"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/turingschool-examples/react-starter-kit.git"
+    "url": "https://github.com/mjvalade/scrabble-assessment.git"
   },
-  "author": "Steve Kinney",
+  "author": "MaryJane Valade, Steve Kinney",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/turingschool-examples/react-starter-kit/issues"
+    "url": "https://github.com/mjvalade/scrabble-assessment/issues"
   },
-  "homepage": "https://github.com/turingschool-examples/react-starter-kit",
+  "homepage": "https://github.com/mjvalade/scrabble-assessment",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.7.4",

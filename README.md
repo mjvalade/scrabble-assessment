@@ -1,4 +1,4 @@
-# React Starter Kit
+# Mod 2 Assessment - Scrabble game
 
 To install the dependencies:
 
