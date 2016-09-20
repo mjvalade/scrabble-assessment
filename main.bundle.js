@@ -29417,12 +29417,30 @@
 
 	    _this.state = {
 	      word: '',
-	      score: 0
+	      score: 0,
+	      wordArray: []
 	    };
 	    return _this;
 	  }
 
 	  _createClass(Application, [{
+	    key: 'handleChange',
+	    value: function handleChange(e) {
+	      this.setState({ word: e.target.value });
+	      this.setState({ score: (0, _scoreWord2.default)(this.state.word) });
+	    }
+	  }, {
+	    key: 'clearCurrentWord',
+	    value: function clearCurrentWord() {
+	      this.setState({ word: '' });
+	      this.setState({ score: 0 });
+	    }
+	  }, {
+	    key: 'updateWordArray',
+	    value: function updateWordArray() {
+	      this.setState({ wordArray: this.state.wordArray.concat(this.state.word) });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
@@ -29430,25 +29448,45 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          value: this.state.word,
+	          placeholder: 'Type Word...',
+	          onChange: function onChange(e) {
+	            return _this2.handleChange(e);
+	          }
+	        }),
 	        _react2.default.createElement(
 	          'p',
 	          null,
+	          'Score ',
 	          this.state.score
 	        ),
-	        _react2.default.createElement('input', {
-	          type: 'text',
-	          placeholder: 'Type Word...',
-	          onChange: function onChange(e) {
-	            return _this2.setState({ word: e.target.value });
-	          }
-	        }),
 	        _react2.default.createElement(
 	          'button',
 	          {
 	            onClick: function onClick() {
-	              return _this2.setState({ score: (0, _scoreWord2.default)(_this2.state.word) });
-	            } },
+	              return _this2.updateWordArray();
+	            }
+	          },
 	          'Submit'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          {
+	            onClick: function onClick() {
+	              return _this2.clearCurrentWord();
+	            } },
+	          'Clear'
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            this.state.wordArray.length
+	          )
 	        )
 	      );
 	    }
