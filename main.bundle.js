@@ -29421,11 +29421,6 @@
 	    };
 	    return _this;
 	  }
-	  // 
-	  // scoreWord(word = this.state.word) {
-	  //   const score = scoreWord(word);
-	  //   this.setState({score});
-	  // }
 
 	  _createClass(Application, [{
 	    key: 'render',
@@ -29451,9 +29446,9 @@
 	          'button',
 	          {
 	            onClick: function onClick() {
-	              return _this2.scoreWord();
+	              return _this2.setState({ score: (0, _scoreWord2.default)(_this2.state.word) });
 	            } },
-	          'Click here'
+	          'Submit'
 	        )
 	      );
 	    }
