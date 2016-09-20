@@ -29395,6 +29395,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _scoreWord = __webpack_require__(470);
+
+	var _scoreWord2 = _interopRequireDefault(_scoreWord);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29402,16 +29406,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var letterScores = {
-	  A: 1, B: 3, C: 3, D: 2,
-	  E: 1, F: 4, G: 2, H: 4,
-	  I: 1, J: 8, K: 5, L: 1,
-	  M: 3, N: 1, O: 1, P: 3,
-	  Q: 10, R: 1, S: 1, T: 1,
-	  U: 1, V: 4, W: 4, X: 8,
-	  Y: 4, Z: 10
-	};
 
 	var Application = function (_Component) {
 	  _inherits(Application, _Component);
@@ -29427,28 +29421,13 @@
 	    };
 	    return _this;
 	  }
+	  // 
+	  // scoreWord(word = this.state.word) {
+	  //   const score = scoreWord(word);
+	  //   this.setState({score});
+	  // }
 
 	  _createClass(Application, [{
-	    key: 'scoreWord',
-	    value: function scoreWord() {
-	      var word = arguments.length <= 0 || arguments[0] === undefined ? this.state.word : arguments[0];
-
-	      var score = void 0;
-	      // .trim() to get rid of excess whitespace of word
-	      // let newWord = word.trim();
-	      if (word === '' || word === null) {
-	        score = 0;
-	      } else {
-	        score = word.split('').reduce(function (score, char) {
-	          var upperCase = char.toUpperCase();
-	          return letterScores[upperCase] + score;
-	        }, 0);
-	      }
-
-	      // if block for taking second argument
-	      this.setState({ score: score });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
@@ -29484,6 +29463,33 @@
 	}(_react.Component);
 
 	exports.default = Application;
+
+/***/ },
+/* 470 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var letterScores = {
+	  A: 1, B: 3, C: 3, D: 2,
+	  E: 1, F: 4, G: 2, H: 4,
+	  I: 1, J: 8, K: 5, L: 1,
+	  M: 3, N: 1, O: 1, P: 3,
+	  Q: 10, R: 1, S: 1, T: 1,
+	  U: 1, V: 4, W: 4, X: 8,
+	  Y: 4, Z: 10
+	};
+
+	module.exports = function (word) {
+	  var multiplier = arguments.length <= 1 || arguments[1] === undefined ? 1 : arguments[1];
+
+	  if (!word) {
+	    return 0;
+	  }
+	  return word.toUpperCase().split('').reduce(function (score, letter) {
+	    return score + (letterScores[letter] || 0);
+	  }, 0) * multiplier;
+	};
 
 /***/ }
 /******/ ]);
