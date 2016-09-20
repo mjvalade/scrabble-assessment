@@ -12361,11 +12361,11 @@
 	      var word = arguments.length <= 0 || arguments[0] === undefined ? this.state.word : arguments[0];
 
 	      var score = void 0;
+	      // .trim() to get rid of excess whitespace of word
+	      // let newWord = word.trim();
 	      if (word === '' || word === null) {
 	        score = 0;
 	      } else {
-	        // .trim() to get rid of excess whitespace of word
-	        // let = word.trim()
 	        score = word.split('').reduce(function (score, char) {
 	          var upperCase = char.toUpperCase();
 	          return letterScores[upperCase] + score;
@@ -12722,7 +12722,7 @@
 	'use strict';
 
 	var assert = __webpack_require__(480).assert;
-	__webpack_require__(469);
+	var App = __webpack_require__(469);
 
 	describe('The test bundle', function () {
 	  it('should be connected', function () {
@@ -12731,14 +12731,18 @@
 	});
 
 	describe('The scoreWord function', function () {
-	  xit('should take a word from the input field', function () {
+	  it('should return 0 if word === ""', function () {
+	    App.word = "";
 
-	    assert(true);
+	    App.scoreWord(App.word);
+	    assert.equal(App.word, 0);
 	  });
 
-	  xit('should take a word from the input field', function () {
+	  it('should take a word and convert it to a number', function () {
+	    // App.word = 'hello';
 
-	    assert(true);
+	    App.scoreWord('hello');
+	    assert.equal(App.score, 8);
 	  });
 
 	  xit('should take a word from the input field', function () {

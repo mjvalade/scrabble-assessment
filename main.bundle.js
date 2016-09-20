@@ -29434,11 +29434,11 @@
 	      var word = arguments.length <= 0 || arguments[0] === undefined ? this.state.word : arguments[0];
 
 	      var score = void 0;
+	      // .trim() to get rid of excess whitespace of word
+	      // let newWord = word.trim();
 	      if (word === '' || word === null) {
 	        score = 0;
 	      } else {
-	        // .trim() to get rid of excess whitespace of word
-	        // let = word.trim()
 	        score = word.split('').reduce(function (score, char) {
 	          var upperCase = char.toUpperCase();
 	          return letterScores[upperCase] + score;

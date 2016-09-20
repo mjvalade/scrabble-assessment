@@ -1,5 +1,5 @@
 const assert = require('chai').assert;
-require('../lib/components/Application.js');
+const App = require('../lib/components/Application.js');
 
 describe('The test bundle', function() {
   it('should be connected', function() {
@@ -8,14 +8,18 @@ describe('The test bundle', function() {
 });
 
 describe('The scoreWord function', function() {
-  xit('should take a word from the input field', function() {
+  it('should return 0 if word === ""', function() {
+    App.word = "";
 
-    assert(true);
+    App.scoreWord(App.word);
+    assert.equal(App.word, 0);
   });
 
-  xit('should take a word from the input field', function() {
+  it('should take a word and convert it to a number', function() {
+    // App.word = 'hello';
 
-    assert(true);
+    App.scoreWord('hello');
+    assert.equal(App.score, 8);
   });
 
   xit('should take a word from the input field', function() {
